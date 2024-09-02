@@ -69,11 +69,17 @@
         h2 {
             color: #ff66b2;
         }
+        .image {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
     <div class="central-box">
-        <img id="crush-image" src="sweet.gif" alt="Crush Image" width="100%" height="auto">
+        <img id="crush-image" src="sweet.gif" alt="Crush Image" class="image">
         <h2 id="message">Hi Crush mo ba ako?</h2>
         <button class="button button-yes" onclick="yesClicked()">Yes</button>
         <button class="button button-no" onclick="moveButtonNo()">No</button>
@@ -88,13 +94,13 @@
             yes: 'love.gif'
         };
         const musicFile = 'Kilig1.mp3';
+        const moveDistance = 192; // 2 inches in pixels (96px per inch)
 
         function yesClicked() {
-            const centralBox = document.querySelector('.central-box');
-            centralBox.innerHTML = `
-                <img id="crush-image" src="${images.yes}" alt="Crush Image" width="100%" height="auto">
-                <h2>Crush rin kita yiee</h2>
-            `;
+            const image = document.getElementById('crush-image');
+            image.src = images.yes;
+            const message = document.getElementById('message');
+            message.innerText = 'Crush rin kita yiee';
             playMusic();
             removeButtons();
         }
@@ -103,11 +109,23 @@
             const buttonNo = document.querySelector('.button-no');
             const maxX = window.innerWidth - buttonNo.offsetWidth;
             const maxY = window.innerHeight - buttonNo.offsetHeight;
-            const moveX = Math.random() * maxX;
-            const moveY = Math.random() * maxY;
+
+            // Generate random movement within a 2-inch radius
+            const moveX = Math.random() * moveDistance - (moveDistance / 2);
+            const moveY = Math.random() * moveDistance - (moveDistance / 2);
+
+            let currentLeft = buttonNo.offsetLeft + moveX;
+            let currentTop = buttonNo.offsetTop + moveY;
+
+            // Ensure the button stays within the window bounds
+            if (currentLeft < 0) currentLeft = 0;
+            if (currentTop < 0) currentTop = 0;
+            if (currentLeft + buttonNo.offsetWidth > window.innerWidth) currentLeft = window.innerWidth - buttonNo.offsetWidth;
+            if (currentTop + buttonNo.offsetHeight > window.innerHeight) currentTop = window.innerHeight - buttonNo.offsetHeight;
+
             buttonNo.style.position = 'absolute';
-            buttonNo.style.left = `${moveX}px`;
-            buttonNo.style.top = `${moveY}px`;
+            buttonNo.style.left = `${currentLeft}px`;
+            buttonNo.style.top = `${currentTop}px`;
         }
 
         function removeButtons() {
