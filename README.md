@@ -84,7 +84,7 @@
     
     <body>
     <div class="central-box">
-        <img id="crush-image" src="sweet.gif" alt="love.gif" class="image">
+        <img id="crush-image" src="sweet.gif" alt="Crush Image" class="image">
         <h2 id="message">Hi Crush mo ba ako?</h2>
         <button class="button button-yes" onclick="yesClicked()">Yes</button>
         <button class="button button-no" onclick="moveButtonNo()">No</button>
