@@ -77,7 +77,12 @@
         }
     </style>
 </head>
-<body>
+
+    
+    
+    
+    
+    <body>
     <div class="central-box">
         <img id="crush-image" src="sweet.gif" alt="love.gif" class="image">
         <h2 id="message">Hi Crush mo ba ako?</h2>
