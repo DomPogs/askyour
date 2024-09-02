@@ -91,7 +91,7 @@
         // Paths to your images and music
         const images = {
             initial: 'sweet.gif',
-            yes: 'love.gif'
+            yes: 'inlove.gif'
         };
         const musicFile = 'Kilig1.mp3';
         const moveDistance = 192; // 2 inches in pixels (96px per inch)
