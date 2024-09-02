@@ -27,11 +27,6 @@
             position: relative;
             backdrop-filter: blur(10px);
         }
-        .central-box img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
         .button {
             margin: 10px;
             padding: 15px 30px;
@@ -78,45 +73,36 @@
 </head>
 <body>
     <div class="central-box">
-        <img id="crush-image" src="sweet.gif" alt="Crush Image">
+        <img id="crush-image" src="sweet.gif" alt="Crush Image" width="100%" height="auto">
         <h2 id="message">Hi Crush mo ba ako?</h2>
         <button class="button button-yes" onclick="yesClicked()">Yes</button>
-        <button class="button button-no" onmouseover="avoidClick()" onclick="avoidClick()" ontouchstart="avoidClick()">No</button>
+        <button class="button button-no" onclick="moveButtonNo()">No</button>
     </div>
 
     <div class="credit">Created by Dominique E</div>
 
     <script>
         // Paths to your images and music
-        const initialImage = 'sweet.gif';
-        const yesImage = 'love.gif';
-        const musicFile = 'Kilig1.mp3';
+        let initialImage = 'sweet.gif';
+        let yesImage = 'love.gif';
+        let musicFile = 'Kilig1.mp3';
 
         function yesClicked() {
             const centralBox = document.querySelector('.central-box');
             centralBox.innerHTML = `
-                <img id="crush-image" src="${yesImage}" alt="Crush Image">
+                <img id="crush-image" src="${yesImage}" alt="Crush Image" width="100%" height="auto">
                 <h2>Crush rin kita yiee</h2>
             `;
             playMusic();
         }
 
-        function avoidClick() {
+        function moveButtonNo() {
             let buttonNo = document.querySelector('.button-no');
-            let moveX = Math.floor(Math.random() * 200) - 100; // Move within a range of -100 to +100 pixels
-            let moveY = Math.floor(Math.random() * 200) - 100; // Move within a range of -100 to +100 pixels
-            let currentLeft = buttonNo.offsetLeft + moveX;
-            let currentTop = buttonNo.offsetTop + moveY;
-
-            // Ensure the button stays within the window bounds
-            if (currentLeft < 0) currentLeft = 0;
-            if (currentTop < 0) currentTop = 0;
-            if (currentLeft + buttonNo.offsetWidth > window.innerWidth) currentLeft = window.innerWidth - buttonNo.offsetWidth;
-            if (currentTop + buttonNo.offsetHeight > window.innerHeight) currentTop = window.innerHeight - buttonNo.offsetHeight;
-
+            let moveX = Math.floor(Math.random() * (window.innerWidth - buttonNo.offsetWidth));
+            let moveY = Math.floor(Math.random() * (window.innerHeight - buttonNo.offsetHeight));
             buttonNo.style.position = 'absolute';
-            buttonNo.style.left = currentLeft + 'px';
-            buttonNo.style.top = currentTop + 'px';
+            buttonNo.style.left = moveX + 'px';
+            buttonNo.style.top = moveY + 'px';
         }
 
         function playMusic() {
