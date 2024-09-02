@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,6 +27,11 @@
             text-align: center;
             position: relative;
             backdrop-filter: blur(10px);
+        }
+        .central-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
         }
         .button {
             margin: 10px;
@@ -73,10 +79,10 @@
 </head>
 <body>
     <div class="central-box">
-        <img id="crush-image" src="sweet.gif" alt="Crush Image" width="100%" height="auto">
+        <img id="crush-image" src="sweet.gif" alt="Crush Image">
         <h2 id="message">Hi Crush mo ba ako?</h2>
         <button class="button button-yes" onclick="yesClicked()">Yes</button>
-        <button class="button button-no" onmouseover="avoidClick()">No</button>
+        <button class="button button-no" onmouseover="avoidClick()" onclick="avoidClick()" ontouchstart="avoidClick()">No</button>
     </div>
 
     <div class="credit">Created by Dominique E</div>
@@ -90,7 +96,7 @@
         function yesClicked() {
             const centralBox = document.querySelector('.central-box');
             centralBox.innerHTML = `
-                <img id="crush-image" src="${yesImage}" alt="Crush Image" width="100%" height="auto">
+                <img id="crush-image" src="${yesImage}" alt="Crush Image">
                 <h2>Crush rin kita yiee</h2>
             `;
             playMusic();
