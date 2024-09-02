@@ -97,7 +97,7 @@ HI
         // Paths to your images and music
         const images = {
             initial: 'sweet.gif',
-            yes: 'inlove.gif'
+            yes: 'love.gif'
         };
         const musicFile = 'Kilig1.mp3';
         const moveDistance = 192; // 2 inches in pixels (96px per inch)
@@ -117,8 +117,8 @@ HI
             const maxY = window.innerHeight - buttonNo.offsetHeight;
 
             // Generate random movement within a 2-inch radius
-            const moveX = Math.random() * moveDistance - (moveDistance / 2);
-            const moveY = Math.random() * moveDistance - (moveDistance / 2);
+            const moveX = Math.random() * moveDistance - (moveDistance / 3);
+            const moveY = Math.random() * moveDistance - (moveDistance / 3);
 
             let currentLeft = buttonNo.offsetLeft + moveX;
             let currentTop = buttonNo.offsetTop + moveY;
