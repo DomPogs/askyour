@@ -83,30 +83,42 @@
 
     <script>
         // Paths to your images and music
-        let initialImage = 'sweet.gif';
-        let yesImage = 'love.gif';
-        let musicFile = 'Kilig1.mp3';
+        const images = {
+            initial: 'sweet.gif',
+            yes: 'love.gif'
+        };
+        const musicFile = 'Kilig1.mp3';
 
         function yesClicked() {
             const centralBox = document.querySelector('.central-box');
             centralBox.innerHTML = `
-                <img id="crush-image" src="${yesImage}" alt="Crush Image" width="100%" height="auto">
+                <img id="crush-image" src="${images.yes}" alt="Crush Image" width="100%" height="auto">
                 <h2>Crush rin kita yiee</h2>
             `;
             playMusic();
+            removeButtons();
         }
 
         function moveButtonNo() {
-            let buttonNo = document.querySelector('.button-no');
-            let moveX = Math.floor(Math.random() * (window.innerWidth - buttonNo.offsetWidth));
-            let moveY = Math.floor(Math.random() * (window.innerHeight - buttonNo.offsetHeight));
+            const buttonNo = document.querySelector('.button-no');
+            const maxX = window.innerWidth - buttonNo.offsetWidth;
+            const maxY = window.innerHeight - buttonNo.offsetHeight;
+            const moveX = Math.random() * maxX;
+            const moveY = Math.random() * maxY;
             buttonNo.style.position = 'absolute';
-            buttonNo.style.left = moveX + 'px';
-            buttonNo.style.top = moveY + 'px';
+            buttonNo.style.left = `${moveX}px`;
+            buttonNo.style.top = `${moveY}px`;
+        }
+
+        function removeButtons() {
+            const yesButton = document.querySelector('.button-yes');
+            const noButton = document.querySelector('.button-no');
+            if (yesButton) yesButton.style.display = 'none';
+            if (noButton) noButton.style.display = 'none';
         }
 
         function playMusic() {
-            let audio = new Audio(musicFile);
+            const audio = new Audio(musicFile);
             audio.play();
         }
     </script>
