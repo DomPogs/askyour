@@ -85,7 +85,7 @@
         // Paths to your images and music
         const images = {
             initial: 'sweet.gif',
-            yes: 'love.jpg'
+            yes: 'love.gif'
         };
         const musicFile = 'Kilig1.mp3';
 
